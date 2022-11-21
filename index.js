@@ -27,6 +27,9 @@ const selectingDressType = (clickedElement) => {
 };
 
 const submittingInputs = () => {
+    //clearing the Output field
+    document.querySelector("#outPut").innerHTML = "";
+
     let dress_type = () => {
         let types = document.querySelector("#dress_type").children;
         types = Object.values(types);
@@ -43,21 +46,24 @@ const submittingInputs = () => {
         return selected;
     };
 
-    dress_type = dress_type();
+    dress_type = dress_type().toUpperCase();
     let weight = document.querySelector("#weight").value;
     let height = document.querySelector("#height").value;
 
     const orgnizedData = {
         dress_type: dress_type,
-        height: height,
-        weight: weight,
-        height_to_weight: height - 100 - weight,
+        height: Number(height),
+        weight: Number(weight),
+        height_to_weight: (height - weight - 100) * -1,
     };
 
-    console.log(orgnizedData);
+    cpu(orgnizedData, "درێژی قۆڵ");
+    jiawazy_kesh(orgnizedData.height_to_weight);
 };
 
 const printingResult = ([pro, res]) => {
+    // creating and appending the element
+
     let DIV_print = document.createElement("div");
     DIV_print.classList.add("print");
 
@@ -74,8 +80,83 @@ const printingResult = ([pro, res]) => {
     document.querySelector("#outPut").appendChild(DIV_print);
 };
 
-printingResult(["باڵا", "200"]);
-printingResult(["کێش", "50"]);
-printingResult(["درێژی قۆڵ", "70"]);
-printingResult(["درێژی قۆڵ", "70"]);
-printingResult(["درێژی قۆڵ", "70"]);
+//+++++++++++++ Dresses Functions
+
+// Database
+let db = fetch("./db.json")
+    .then((res) => res.json())
+    .then((res) => {
+        db = res;
+    });
+
+const cpu = (od, title) => {
+    // specifiong height
+    let dress_type = od.dress_type.toString();
+    let dress_sizes = db[dress_type];
+
+    for (let index = 0; index < dress_sizes.length; index++) {
+        let i_dress_sizes = dress_sizes[index];
+        let start = i_dress_sizes.limit[0];
+        let end = i_dress_sizes.limit[1];
+        let person_height = od.height;
+
+        let result1 = start <= person_height;
+        let result2 = end > person_height;
+        let finalResult = result1 + result2;
+
+        if (finalResult >= 2) {
+            // found the height secter Now searching for weight to height
+            console.log("height is between ", start, "-", end, "index", index);
+
+            //checking Weight Difference for result
+            for (let i = 0; i < i_dress_sizes.sizes.length; i++) {
+                const sizes = i_dress_sizes.sizes[i];
+
+                const height_to_weight = od.height_to_weight;
+                let start = sizes[0];
+                let end = sizes[1];
+
+                let result1 = start <= height_to_weight;
+                let result2 = end > height_to_weight;
+                let finalResult = result1 + result2;
+
+                console.log(start, ":::", height_to_weight, ":::", end);
+                console.log(result1, result2);
+                console.log(finalResult);
+
+                if (finalResult >= 2) {
+                    printingResult([title, sizes[2]]);
+
+                    console.log(finalResult);
+                    console.log("the condition is true");
+                    break;
+                }
+            }
+
+            break;
+        } else {
+            console.log(
+                "the person is not between ",
+                start,
+                "-",
+                end,
+                "height"
+            );
+        }
+    }
+};
+
+const jiawazy_kesh = (height_to_weight) => {
+    if (height_to_weight >= 0) {
+        printingResult([
+            "جیاوازی کێش و باڵا",
+            height_to_weight + " : " + "کیلۆ زیاترە",
+        ]);
+    } else if (height_to_weight < 0) {
+        printingResult([
+            "جیاوازی کێش و باڵا",
+            height_to_weight * -1 + " : " + "کیلۆ کەمترە",
+        ]);
+    }
+    console.log(height_to_weight);
+};

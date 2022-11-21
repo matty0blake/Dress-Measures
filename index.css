@@ -109,6 +109,7 @@ nav h3 {
     overflow-y: auto;
     padding-bottom: 30px;
     border-top: 3px solid hsl(0, 0%, 90%);
+    transition: 1s;
 }
 
 #outPut .print:first-child {
@@ -131,4 +132,5 @@ nav h3 {
     color: black;
     font-size: 18px;
     font-weight: 900;
+    direction: rtl;
 }
