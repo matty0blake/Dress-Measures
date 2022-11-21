@@ -16,6 +16,12 @@
     -webkit-user-select: none;
 }
 
+html {  
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
 /************************* Body */
 body {
     width: 100vw;
