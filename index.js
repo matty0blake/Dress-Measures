@@ -57,7 +57,21 @@ const submittingInputs = () => {
         height_to_weight: (height - weight - 100) * -1,
     };
 
+    //+++++++++++ List for Functions to Run
+
+    // drezhy qol
     cpu(orgnizedData, "درێژی قۆڵ");
+
+    //  drezhy tanwra
+    let od = orgnizedData;
+    od.dress_type = "DREZHY_TANWRA";
+    cpu(od, "درێژی تەنورە");
+
+    // DREZHY_LASTIK_TANWRA
+    od.dress_type = "DREZHY_LASTIK_TANWRA";
+    cpu(od, "درێژی لاستیکی تەنورە");
+
+    // jiwazy kesh bo bala
     jiawazy_kesh(orgnizedData.height_to_weight);
 };
 
@@ -91,6 +105,7 @@ let db = fetch("./db.json")
 
 const cpu = (od, title) => {
     // specifiong height
+    console.log(od);
     let dress_type = od.dress_type.toString();
     let dress_sizes = db[dress_type];
 
