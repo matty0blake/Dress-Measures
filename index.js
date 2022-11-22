@@ -8,8 +8,18 @@ document
     .querySelector("#submittingBtn")
     .addEventListener("click", () => submittingInputs());
 
+document
+    .querySelector("#weight")
+    .addEventListener("click", clear_height_weight_input(this));
+document.querySelector("#height");
+
+function clear_height_weight_input(e) {
+    console.log(e);
+    a;
+}
+
 // Functions
-const selectingDressType = (clickedElement) => {
+function selectingDressType(clickedElement) {
     let dress_type = document.querySelector("#dress_type");
     let listOfOptions = Object.values(dress_type.children);
 
@@ -24,9 +34,9 @@ const selectingDressType = (clickedElement) => {
 
     //setting clicked Element attribute (selected="true")
     clickedElement.setAttribute("selected", "true");
-};
+}
 
-const submittingInputs = () => {
+function submittingInputs() {
     //clearing the Output field
     document.querySelector("#outPut").innerHTML = "";
 
@@ -73,9 +83,9 @@ const submittingInputs = () => {
 
     // jiwazy kesh bo bala
     jiawazy_kesh(orgnizedData.height_to_weight);
-};
+}
 
-const printingResult = ([pro, res]) => {
+function printingResult([pro, res]) {
     // creating and appending the element
 
     let DIV_print = document.createElement("div");
@@ -92,7 +102,7 @@ const printingResult = ([pro, res]) => {
     DIV_print.appendChild(P_res);
     DIV_print.appendChild(P_pro);
     document.querySelector("#outPut").appendChild(DIV_print);
-};
+}
 
 //+++++++++++++ Dresses Functions
 
@@ -103,7 +113,7 @@ let db = fetch("./db.json")
         db = res;
     });
 
-const cpu = (od, title) => {
+function cpu(od, title) {
     // specifiong height
     console.log(od);
     let dress_type = od.dress_type.toString();
@@ -159,9 +169,9 @@ const cpu = (od, title) => {
             );
         }
     }
-};
+}
 
-const jiawazy_kesh = (height_to_weight) => {
+function jiawazy_kesh(height_to_weight) {
     if (height_to_weight >= 0) {
         printingResult([
             "جیاوازی کێش و باڵا",
@@ -174,4 +184,4 @@ const jiawazy_kesh = (height_to_weight) => {
         ]);
     }
     console.log(height_to_weight);
-};
+}
