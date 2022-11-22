@@ -15,7 +15,6 @@ document.querySelector("#height");
 
 function clear_height_weight_input(e) {
     console.log(e);
-    a;
 }
 
 // Functions
