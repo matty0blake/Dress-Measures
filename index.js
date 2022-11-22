@@ -97,7 +97,7 @@ function submittingInputs() {
     // =========== ZNJIR
     if (dress_type == "SAR") {
         od.dress_type = "ZNJIR";
-        cpu(od, "زنجیری عابا");
+        cpu(od, "درێژی زنجیرەکەی");
     }
     // ===========  jiwazy kesh bo bala
     jiawazy_kesh(orgnizedData.height_to_weight);
