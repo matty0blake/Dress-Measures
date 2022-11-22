@@ -59,29 +59,30 @@ function submittingInputs() {
 
     //+++++++++++ List for Functions to Run
 
-    // drezhy qol
+    // ===========  drezhy qol
     cpu(orgnizedData, "درێژی قۆڵ");
 
     //  drezhy tanwra
-    let od = orgnizedData;
+    var od = orgnizedData;
     od.dress_type = "DREZHY_TANWRA";
     cpu(od, "درێژی تەنورە");
 
-    // DREZHY_LASTIK_TANWRA
+    // ===========  DREZHY_LASTIK_TANWRA
+    var od = orgnizedData;
     od.dress_type = "DREZHY_LASTIK_TANWRA";
     cpu(od, "درێژی لاستیکی تەنورە");
 
-    // ZNJIR
-    if ((od.dress_type = "SAR")) {
+    // =========== ZNJIR
+    if (dress_type == "SAR") {
         od.dress_type = "ZNJIR";
         cpu(od, "زنجیری عابا");
     }
-    // jiwazy kesh bo bala
+    // ===========  jiwazy kesh bo bala
     jiawazy_kesh(orgnizedData.height_to_weight);
 }
 
 function printingResult([pro, res]) {
-    // creating and appending the element
+    //      creating and appending the element
 
     let DIV_print = document.createElement("div");
     DIV_print.classList.add("print");
@@ -110,7 +111,6 @@ let db = fetch("./db.json")
 
 function cpu(od, title) {
     // specifiong height
-    console.log(od);
     let dress_type = od.dress_type.toString();
     let dress_sizes = db[dress_type];
 
@@ -125,9 +125,6 @@ function cpu(od, title) {
         let finalResult = result1 + result2;
 
         if (finalResult >= 2) {
-            // found the height secter Now searching for weight to height
-            console.log("height is between ", start, "-", end, "index", index);
-
             //checking Weight Difference for result
             for (let i = 0; i < i_dress_sizes.sizes.length; i++) {
                 const sizes = i_dress_sizes.sizes[i];
@@ -140,28 +137,14 @@ function cpu(od, title) {
                 let result2 = end > height_to_weight;
                 let finalResult = result1 + result2;
 
-                console.log(start, ":::", height_to_weight, ":::", end);
-                console.log(result1, result2);
-                console.log(finalResult);
-
                 if (finalResult >= 2) {
                     printingResult([title, sizes[2]]);
 
-                    console.log(finalResult);
-                    console.log("the condition is true");
                     break;
                 }
             }
 
             break;
-        } else {
-            console.log(
-                "the person is not between ",
-                start,
-                "-",
-                end,
-                "height"
-            );
         }
     }
 }
@@ -178,5 +161,4 @@ function jiawazy_kesh(height_to_weight) {
             height_to_weight * -1 + " : " + "کیلۆ کەمترە",
         ]);
     }
-    console.log(height_to_weight);
 }
