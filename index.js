@@ -59,15 +59,26 @@ function submittingInputs() {
 
     //+++++++++++ List for Functions to Run
 
+    //checking if any height,weight inputed
+    if (orgnizedData.height + orgnizedData.weight === 0) {
+        console.log("Stopping the Process , cause: No Data Entered");
+        printingResult([]);
+        let outputed_comment = document.querySelector("#outPut");
+        outputed_comment.firstChild.innerHTML =
+            "<p style='width:100%; word-spacing:6px; color:white;'>کێش و باڵات داخڵ نەکردووە</p>";
+        outputed_comment.firstChild.style.backgroundColor = "#DC3545";
+        return 0;
+    }
+
     // ========= printing (height,weight) && clearing input field
     printingResult([
         `کێش : ${orgnizedData.weight}`,
         `باڵا : ${orgnizedData.height}`,
     ]);
 
-    let inputs_to_clear = Object.values(
-        document.querySelector("#height_weight").children
-    ).map((e) => (e.value = ""));
+    Object.values(document.querySelector("#height_weight").children).map(
+        (e) => (e.value = "")
+    );
 
     // ===========  drezhy qol
 

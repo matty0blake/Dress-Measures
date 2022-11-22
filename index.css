@@ -10,12 +10,12 @@
     padding: 0;
     box-sizing: border-box;
     font-family: main-font;
+    letter-spacing: 1px;
     transition: 0.01;
     user-select: none;
     user-zoom: none;
     -webkit-user-select: none;
 }
-
 
 /************************* Body */
 body {
