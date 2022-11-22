@@ -59,7 +59,18 @@ function submittingInputs() {
 
     //+++++++++++ List for Functions to Run
 
+    // ========= printing (height,weight) && clearing input field
+    printingResult([
+        `کێش : ${orgnizedData.weight}`,
+        `باڵا : ${orgnizedData.height}`,
+    ]);
+
+    let inputs_to_clear = Object.values(
+        document.querySelector("#height_weight").children
+    ).map((e) => (e.value = ""));
+
     // ===========  drezhy qol
+
     cpu(orgnizedData, "درێژی قۆڵ");
 
     //  drezhy tanwra
