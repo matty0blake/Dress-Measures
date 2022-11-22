@@ -8,15 +8,6 @@ document
     .querySelector("#submittingBtn")
     .addEventListener("click", () => submittingInputs());
 
-document
-    .querySelector("#weight")
-    .addEventListener("click", clear_height_weight_input(this));
-document.querySelector("#height");
-
-function clear_height_weight_input(e) {
-    console.log(e);
-}
-
 // Functions
 function selectingDressType(clickedElement) {
     let dress_type = document.querySelector("#dress_type");
@@ -80,6 +71,11 @@ function submittingInputs() {
     od.dress_type = "DREZHY_LASTIK_TANWRA";
     cpu(od, "درێژی لاستیکی تەنورە");
 
+    // ZNJIR
+    if ((od.dress_type = "SAR")) {
+        od.dress_type = "ZNJIR";
+        cpu(od, "زنجیری عابا");
+    }
     // jiwazy kesh bo bala
     jiawazy_kesh(orgnizedData.height_to_weight);
 }
