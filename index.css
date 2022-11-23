@@ -1,7 +1,7 @@
 /************************* Imports */
 @font-face {
     font-family: main-font;
-    src: url(./assets/fonts/Rabar_022.ttf);
+    src: url(./assets/fonts/NRT-Bd.ttf);
 }
 
 /************************* General Styles  */
@@ -10,7 +10,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: main-font;
-    letter-spacing: 1px;
+
     transition: 0.01;
     user-select: none;
     user-zoom: none;
@@ -58,8 +58,8 @@ nav h3 {
     width: 33%;
     color: black;
     display: flex;
-    font-weight: 700;
-    text-shadow: 0 0 4px hsl(0, 0%, 50%);
+    font-weight: 500;
+    text-shadow: 0 0 2px hsla(0, 0%, 50%, 0.9);
 }
 
 #height_weight {
@@ -132,6 +132,6 @@ nav h3 {
     text-align: center;
     color: black;
     font-size: 18px;
-    font-weight: 900;
+    font-weight: 500;
     direction: rtl;
 }
