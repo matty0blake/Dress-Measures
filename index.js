@@ -99,6 +99,12 @@ function submittingInputs() {
         od.dress_type = "ZNJIR";
         cpu(od, "درێژی زنجیرەکەی");
     }
+    
+    // =========== Pzma
+        var od = orgnizedData;
+        od.dress_type = "PZMA";
+        cpu(od, "پزمە");
+    
     // ===========  jiwazy kesh bo bala
     jiawazy_kesh(orgnizedData.height_to_weight);
 }
