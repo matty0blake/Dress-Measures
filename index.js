@@ -102,8 +102,8 @@ function submittingInputs() {
     
     // =========== Pzma
         var od = orgnizedData;
-        od.dress_type = "PZMA";
-        cpu(od, "پزمە");
+        od.dress_type = "QIAS-SHAN";
+        cpu(od, "قیاسی شان");
     
     // ===========  jiwazy kesh bo bala
     jiawazy_kesh(orgnizedData.height_to_weight);
